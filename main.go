@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"github.com/bokjo/monkey-island-api/api"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	mia := api.API{}
+	mia.Init("postgres", "postgres", "postgres")
+
+	mia.Run()
 }

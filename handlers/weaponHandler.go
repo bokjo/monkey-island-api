@@ -21,7 +21,7 @@ func UpdateWeapon(w http.ResponseWriter, r *http.Request) {
 
 // DeleteWeapon handles deleting single Weapon
 func DeleteWeapon(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("UpdateWeapon HANDLER!"))
+	w.Write([]byte("DeleteWeapon HANDLER!"))
 }
 
 // GetAllWeapons handles retrieving all the Weapons

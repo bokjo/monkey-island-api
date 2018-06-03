@@ -21,7 +21,7 @@ func UpdateDog(w http.ResponseWriter, r *http.Request) {
 
 // DeleteDog handles deleting single dog
 func DeleteDog(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("UpdateDog HANDLER!"))
+	w.Write([]byte("DeleteDog HANDLER!"))
 }
 
 // GetAllDogs handles retrieving all the dogs

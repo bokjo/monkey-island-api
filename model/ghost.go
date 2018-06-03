@@ -11,6 +11,6 @@ type Ghost struct {
 	Name string `json:"name"`
 }
 
-func (m *Ghost) getAllGhosts(db *sql.DB) ([]Ghost, error) {
+func (g *Ghost) getAllGhosts(db *sql.DB) ([]Ghost, error) {
 	return nil, errors.New("N/A")
 }

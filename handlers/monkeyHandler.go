@@ -21,7 +21,7 @@ func UpdateMonkey(w http.ResponseWriter, r *http.Request) {
 
 // DeleteMonkey handles deleting single Monkey
 func DeleteMonkey(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("UpdateMonkey HANDLER!"))
+	w.Write([]byte("DeleteMonkey HANDLER!"))
 }
 
 // GetAllMonkeys handles retrieving all the Monkeys

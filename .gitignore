@@ -13,3 +13,9 @@
 
 #Generated DB files - if any...
 *.db
+
+#VSCode 
+.vscode
+
+#Debug
+debug

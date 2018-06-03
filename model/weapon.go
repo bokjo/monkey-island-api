@@ -28,6 +28,6 @@ func (w *Weapon) deleteWeapon(db *sql.DB) error {
 	return errors.New("N/A")
 }
 
-func (w *Weapon) getAllWeapons(db *sql.DB) error {
-	return errors.New("N/A")
+func (w *Weapon) getAllWeapons(db *sql.DB) ([]Weapon, error) {
+	return nil, errors.New("N/A")
 }

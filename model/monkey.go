@@ -28,6 +28,6 @@ func (m *Monkey) deleteMonkey(db *sql.DB) error {
 	return errors.New("N/A")
 }
 
-func (m *Monkey) getAllMonkeys(db *sql.DB) error {
-	return errors.New("N/A")
+func (m *Monkey) getAllMonkeys(db *sql.DB) ([]Monkey, error) {
+	return nil, errors.New("N/A")
 }

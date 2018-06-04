@@ -13,5 +13,10 @@ type GhostHandler struct {
 
 // GetGhosts handles retrieving random number of ghost
 func (gh *GhostHandler) GetGhosts(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("GetGhosts HANDLER!"))
+	ghosts, err := gh.GhostService.GetAllGhosts()
+	if err != nil {
+		errorRespond(w, http.StatusInternalServerError, err.Error())
+		return
+	}
+	jsonRespond(w, http.StatusOK, ghosts)
 }

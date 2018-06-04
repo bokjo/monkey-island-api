@@ -17,6 +17,7 @@ func TestGetCuddlyToys(t *testing.T) {
 	a = api.API{}
 	a.Init("postgres", "postgres", "postgres")
 	defer a.Db.Close()
+
 	clearTable("dogs")
 	clearTable("monkeys")
 
@@ -39,10 +40,10 @@ func clearTable(tableName string) {
 }
 
 func executeRequest(req *http.Request) *httptest.ResponseRecorder {
-	rr := httptest.NewRecorder()
-	a.Router.ServeHTTP(rr, req)
+	rec := httptest.NewRecorder()
+	a.Router.ServeHTTP(rec, req)
 
-	return rr
+	return rec
 }
 
 func checkResponseCode(t *testing.T, expected, actual int) {

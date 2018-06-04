@@ -27,7 +27,6 @@ func TestMain(m *testing.M) {
 	clearTable("weapons")
 
 	os.Exit(code)
-
 }
 
 func ensureTableExists(tableName string) {

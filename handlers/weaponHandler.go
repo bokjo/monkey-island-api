@@ -1,30 +1,41 @@
 package handlers
 
 import (
+	"database/sql"
 	"net/http"
 )
 
 // GetWeapon handles retrieving single Weapon
-func GetWeapon(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("GetWeapon HANDLER!"))
+func GetWeapon(db *sql.DB) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("GetWeapon HANDLER!"))
+	})
 }
 
 // CreateWeapon handles single Weapon creation
-func CreateWeapon(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("CreateWeapon HANDLER!"))
+func CreateWeapon(db *sql.DB) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("CreateWeapon HANDLER!"))
+	})
 }
 
 // UpdateWeapon handles updating single Weapon
-func UpdateWeapon(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("UpdateWeapon HANDLER!"))
+func UpdateWeapon(db *sql.DB) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("UpdateWeapon HANDLER!"))
+	})
 }
 
 // DeleteWeapon handles deleting single Weapon
-func DeleteWeapon(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("DeleteWeapon HANDLER!"))
+func DeleteWeapon(db *sql.DB) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("DeleteWeapon HANDLER!"))
+	})
 }
 
 // GetAllWeapons handles retrieving all the Weapons
-func GetAllWeapons(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("GetAllWeapons HANDLER!"))
+func GetAllWeapons(db *sql.DB) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("GetAllWeapons HANDLER!"))
+	})
 }

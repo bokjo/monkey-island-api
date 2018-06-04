@@ -5,29 +5,36 @@ import (
 	"errors"
 )
 
-// Monkey struct - representation of a Monkey in a DB
-type Monkey struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	EnergyLevel int    `json:"energy_level"`
+// MonkeyService - struct
+type MonkeyService struct {
+	DB     *sql.DB
+	Monkey *Monkey
 }
 
-func (m *Monkey) getMonkey(db *sql.DB) error {
+// GetMonkey - retrieves single monkey from DB
+func (ms *MonkeyService) GetMonkey(id int64) (*Monkey, error) {
+	monkey := Monkey{}
+	err := ms.DB.QueryRow("SELECT id, name, energy_level FROM monkeys WHERE id=$1", id).Scan(&monkey.ID, &monkey.Name, &monkey.EnergyLevel)
+
+	return &monkey, err
+}
+
+// CreateMonkey - creates single monkey in DB
+func (ms *MonkeyService) CreateMonkey() error {
 	return errors.New("N/A")
 }
 
-func (m *Monkey) createMonkey(db *sql.DB) error {
+// UpdateMonkey - updates single monkey in DB
+func (ms *MonkeyService) UpdateMonkey(newMonkey *Monkey) error {
 	return errors.New("N/A")
 }
 
-func (m *Monkey) updateMonkey(db *sql.DB) error {
+// DeleteMonkey - deletes single monkey from DB
+func (ms *MonkeyService) DeleteMonkey(id int) error {
 	return errors.New("N/A")
 }
 
-func (m *Monkey) deleteMonkey(db *sql.DB) error {
-	return errors.New("N/A")
-}
-
-func (m *Monkey) getAllMonkeys(db *sql.DB) ([]Monkey, error) {
+// GetAllMonkeys - retrieves all the monkeys from DB
+func (ms *MonkeyService) GetAllMonkeys() ([]Monkey, error) {
 	return nil, errors.New("N/A")
 }

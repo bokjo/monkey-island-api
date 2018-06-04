@@ -5,29 +5,37 @@ import (
 	"errors"
 )
 
-// Dog struct - representation of a dog in a DB
-type Dog struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	EnergyLevel int    `json:"energy_level"`
+// DogService - handles the dog type in DB
+type DogService struct {
+	DB  *sql.DB
+	Dog *Dog
 }
 
-func (d *Dog) getDog(db *sql.DB) error {
+// GetDog - retieves single dog from DB
+func (ds *DogService) GetDog(id int64) (*Dog, error) {
+
+	dog := Dog{}
+	err := ds.DB.QueryRow("SELECT id, name, energy_level FROM dogs WHERE id=$1", id).Scan(&dog.ID, &dog.Name, &dog.EnergyLevel)
+
+	return &dog, err
+}
+
+// CreateDog - creates single dog in DB
+func (ds *DogService) CreateDog() error {
 	return errors.New("N/A")
 }
 
-func (d *Dog) createDog(db *sql.DB) error {
+// UpdateDog - updates single dog in DB
+func (ds *DogService) UpdateDog(newDog *Dog) error {
 	return errors.New("N/A")
 }
 
-func (d *Dog) updateDog(db *sql.DB) error {
+// DeleteDog - deletes single dog in DB
+func (ds *DogService) DeleteDog(id int) error {
 	return errors.New("N/A")
 }
 
-func (d *Dog) deleteDog(db *sql.DB) error {
-	return errors.New("N/A")
-}
-
-func (d *Dog) getAllDogs(db *sql.DB) error {
+// GetAllDogs -  retrieves all dogs from DB
+func (ds *DogService) GetAllDogs() error {
 	return errors.New("N/A")
 }

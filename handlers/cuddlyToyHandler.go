@@ -1,13 +1,19 @@
 package handlers
 
 import (
-	"database/sql"
 	"net/http"
+
+	"github.com/bokjo/monkey-island-api/model"
 )
 
+// CuddlyToyHandler handler struct
+type CuddlyToyHandler struct {
+	CuddlyToyService model.CuddlyToyService
+}
+
 // GetCuddlyToys handles retrieving all the cuddly toys
-func GetCuddlyToys(db *sql.DB) http.Handler {
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("GetCuddlyToys HANDLER!"))
-	})
+func (cth *CuddlyToyHandler) GetCuddlyToys(w http.ResponseWriter, r *http.Request) {
+
+	w.Write([]byte("GetCuddlyToys HANDLER!"))
+
 }

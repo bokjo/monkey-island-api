@@ -5,13 +5,13 @@ import (
 	"errors"
 )
 
-// CuddlyToy struct
-type CuddlyToy struct {
-	ID          int    `json:"id"`
-	Name        string `json:"name"`
-	EnergyLevel int    `json:"energy_level"`
+// CuddlyToyService - struct
+type CuddlyToyService struct {
+	DB        *sql.DB
+	CuddlyToy *CuddlyToy
 }
 
-func (ct *CuddlyToy) getAllCuddlyToys(db *sql.DB) error {
-	return errors.New("N/A")
+//GetAllCuddlyToys - retrieve all cuddly toys from DB
+func (cts *CuddlyToyService) GetAllCuddlyToys() ([]CuddlyToy, error) {
+	return nil, errors.New("N/A")
 }

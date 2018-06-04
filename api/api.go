@@ -43,30 +43,40 @@ func (api *API) Run() {
 func (api *API) initRoutes() {
 
 	//Cuddly Toys
-	api.Router.Handle("/api/cuddly_toys", handlers.GetCuddlyToys(api.Db)).Methods(http.MethodGet)
+	cuddlyToyService := model.CuddlyToyService{DB: api.Db}
+	cuddlyToyHandler := handlers.CuddlyToyHandler{CuddlyToyService: cuddlyToyService}
+	api.Router.HandleFunc("/api/cuddly_toys", cuddlyToyHandler.GetCuddlyToys).Methods(http.MethodGet)
 
 	//Dogs
-	api.Router.Handle("/api/cuddly_toys/dogs", handlers.GetAllDogs(api.Db)).Methods(http.MethodGet)
-	api.Router.Handle("/api/cuddly_toys/dogs", handlers.CreateDog(api.Db)).Methods(http.MethodPost)
-	api.Router.Handle("/api/cuddly_toys/dogs/{id:[0-9]+}", handlers.GetDog(api.Db)).Methods(http.MethodGet)
-	api.Router.Handle("/api/cuddly_toys/dogs/{id:[0-9]+}", handlers.UpdateDog(api.Db)).Methods(http.MethodPut)
-	api.Router.Handle("/api/cuddly_toys/dogs/{id:[0-9]+}", handlers.DeleteDog(api.Db)).Methods(http.MethodDelete)
+	dogService := model.DogService{DB: api.Db}
+	dogHandler := handlers.DogHandler{DogService: dogService}
+	api.Router.HandleFunc("/api/cuddly_toys/dogs", dogHandler.GetAllDogs).Methods(http.MethodGet)
+	api.Router.HandleFunc("/api/cuddly_toys/dogs", dogHandler.CreateDog).Methods(http.MethodPost)
+	api.Router.HandleFunc("/api/cuddly_toys/dogs/{id:[0-9]+}", dogHandler.GetDog).Methods(http.MethodGet)
+	api.Router.HandleFunc("/api/cuddly_toys/dogs/{id:[0-9]+}", dogHandler.UpdateDog).Methods(http.MethodPut)
+	api.Router.HandleFunc("/api/cuddly_toys/dogs/{id:[0-9]+}", dogHandler.DeleteDog).Methods(http.MethodDelete)
 
 	//Monkeys
-	api.Router.Handle("/api/cuddly_toys/monkeys", handlers.GetAllMonkeys(api.Db)).Methods(http.MethodGet)
-	api.Router.Handle("/api/cuddly_toys/monkeys", handlers.CreateMonkey(api.Db)).Methods(http.MethodPost)
-	api.Router.Handle("/api/cuddly_toys/monkeys/{id:[0-9]+}", handlers.GetMonkey(api.Db)).Methods(http.MethodGet)
-	api.Router.Handle("/api/cuddly_toys/monkeys/{id:[0-9]+}", handlers.UpdateMonkey(api.Db)).Methods(http.MethodPut)
-	api.Router.Handle("/api/cuddly_toys/monkeys/{id:[0-9]+}", handlers.DeleteMonkey(api.Db)).Methods(http.MethodDelete)
+	monkeyService := model.MonkeyService{DB: api.Db}
+	monkeyHandler := handlers.MonkeyHandler{MonkeyService: monkeyService}
+	api.Router.HandleFunc("/api/cuddly_toys/monkeys", monkeyHandler.GetAllMonkeys).Methods(http.MethodGet)
+	api.Router.HandleFunc("/api/cuddly_toys/monkeys", monkeyHandler.CreateMonkey).Methods(http.MethodPost)
+	api.Router.HandleFunc("/api/cuddly_toys/monkeys/{id:[0-9]+}", monkeyHandler.GetMonkey).Methods(http.MethodGet)
+	api.Router.HandleFunc("/api/cuddly_toys/monkeys/{id:[0-9]+}", monkeyHandler.UpdateMonkey).Methods(http.MethodPut)
+	api.Router.HandleFunc("/api/cuddly_toys/monkeys/{id:[0-9]+}", monkeyHandler.DeleteMonkey).Methods(http.MethodDelete)
 
 	//Weapons
-	api.Router.Handle("/api/weapons", handlers.GetAllWeapons(api.Db)).Methods(http.MethodGet)
-	api.Router.Handle("/api/weapons", handlers.CreateWeapon(api.Db)).Methods(http.MethodPost)
-	api.Router.Handle("/api/weapons/{id:[0-9]+}", handlers.GetWeapon(api.Db)).Methods(http.MethodGet)
-	api.Router.Handle("/api/weapons/{id:[0-9]+}", handlers.UpdateWeapon(api.Db)).Methods(http.MethodPut)
-	api.Router.Handle("/api/weapons/{id:[0-9]+}", handlers.DeleteWeapon(api.Db)).Methods(http.MethodDelete)
+	weaponService := model.WeaponService{DB: api.Db}
+	weaponHandler := handlers.WeaponHandler{WeaponService: weaponService}
+	api.Router.HandleFunc("/api/weapons", weaponHandler.GetAllWeapons).Methods(http.MethodGet)
+	api.Router.HandleFunc("/api/weapons", weaponHandler.CreateWeapon).Methods(http.MethodPost)
+	api.Router.HandleFunc("/api/weapons/{id:[0-9]+}", weaponHandler.GetWeapon).Methods(http.MethodGet)
+	api.Router.HandleFunc("/api/weapons/{id:[0-9]+}", weaponHandler.UpdateWeapon).Methods(http.MethodPut)
+	api.Router.HandleFunc("/api/weapons/{id:[0-9]+}", weaponHandler.DeleteWeapon).Methods(http.MethodDelete)
 
 	// Ghosts
-	api.Router.HandleFunc("/ghosts", handlers.GetGhosts).Methods(http.MethodGet)
+	ghostService := model.GhostService{}
+	ghostHandler := handlers.GhostHandler{GhostService: ghostService}
+	api.Router.HandleFunc("/ghosts", ghostHandler.GetGhosts).Methods(http.MethodGet)
 
 }

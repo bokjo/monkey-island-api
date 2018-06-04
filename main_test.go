@@ -15,6 +15,7 @@ func TestMain(m *testing.M) {
 
 	a = api.API{}
 	a.Init("postgres", "postgres", "postgres")
+	defer a.Db.Close()
 
 	ensureTableExists("dogs")
 	ensureTableExists("monkeys")
@@ -46,7 +47,7 @@ func tableCreationQuery(tableName string) string {
 (
 id SERIAL,
 name TEXT NOT NULL,
-%s TEXT NOT NULL,
+%s INTEGER NOT NULL,
 CONSTRAINT %s_pkey PRIMARY KEY (id)
 )`, tableName, replace, tableName)
 }

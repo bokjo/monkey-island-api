@@ -16,6 +16,7 @@ func TestGetCuddlyToys(t *testing.T) {
 
 	a = api.API{}
 	a.Init("postgres", "postgres", "postgres")
+	defer a.Db.Close()
 	clearTable("dogs")
 	clearTable("monkeys")
 

@@ -1,16 +1,13 @@
 package model
 
 import (
-	"database/sql"
 	"errors"
 )
 
-// Ghost struct - representation of a Ghost in a DB
-type Ghost struct {
-	ID   int    `json:"id"`
-	Name string `json:"name"`
-}
+// GhostService - struct
+type GhostService struct{}
 
-func (g *Ghost) getAllGhosts(db *sql.DB) ([]Ghost, error) {
+// GetAllGhosts - generates random number of ghosts
+func (gs *GhostService) GetAllGhosts() ([]Ghost, error) {
 	return nil, errors.New("N/A")
 }

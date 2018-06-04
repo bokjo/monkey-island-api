@@ -10,5 +10,4 @@ func main() {
 	mia.Init("postgres", "postgres", "postgres")
 
 	mia.Run()
-
 }

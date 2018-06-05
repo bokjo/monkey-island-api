@@ -31,6 +31,7 @@ fingers crossed :)
     - http://localhost:1234/api/cuddly_toys/monkeys - List of all monkeys
     - http://localhost:1234/api/cuddly_toys/dogs    - List of all dogs
     - http://localhost:1234/api/weapons             - List of all weapons
+    - http://localhost:1234/ghosts                  - List of ghosts (random MAX 10)
 - [GET {ID}]   
     - http://localhost:1234/api/cuddly_toys/monkeys/{id} - Single monkey by ID
     - http://localhost:1234/api/cuddly_toys/dogs/{id}    - Single dog by ID
